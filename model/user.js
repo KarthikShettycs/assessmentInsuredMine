@@ -1,20 +1,23 @@
 const mongoose = require('mongoose');
+const AutoIncrement = require('mongoose-sequence')(mongoose);
 
 const userSchema = new mongoose.Schema({
-    firstName: { type: String },
-    dob: { type: Date },
-    address: { type: String },
-    phoneNumber: { type: Number },
-    state: { type: String },
-    zipCode: { type: Number },
-    email: { type: String },
-    gender: { type: String },
+    policy_number : { type: String },
     userType: { type: String },
-    jj:{ type: String },
+    email: { type: String},
+    gender: { type: String },
+    firstname: { type: String },
+    lastname: { type: String }, 
+    address: { type: String },
+    phone: { type: String },
+    state: { type: String },
+    zip: { type: String },
+    dob: { type: String }, 
 }, {
     collection: 'user'
 });
 
-const userModel = mongoose.model('user', userSchema);
 
-module.exports = userModel;
+const UserModel = mongoose.model('user', userSchema);
+
+module.exports = UserModel;
