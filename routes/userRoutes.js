@@ -7,6 +7,7 @@ const csvtojson = require('csvtojson');
 const getPolicyInfoController = require('../controllers/getPolicyInfoController')
 const getAggregatePolicyController = require('../controllers/getAggregatePolicyController')
 const messageStoreController = require('../controllers/messageStoreController')
+const cpuRestartController = require('../controllers/cpuRestartController')
 
 const upload = multer({ dest: 'assets/' });
 
@@ -45,5 +46,8 @@ router.post('/getAggregateData', getAggregatePolicyController.getAggregatorPolic
 
 router.post('/storeMessage', messageStoreController.getMessageStore) 
 
+router.post('/startMonitoringCPU',cpuRestartController.monitorCPU );
+
+router.post('/stopMonitoringCPU', cpuRestartController.stopCPUmonitor) 
 
 module.exports = router;
