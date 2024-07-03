@@ -1,6 +1,7 @@
 const os = require('os');
 const { exec } = require('child_process');
 let monitoringInterval = null;
+const {STATUS_CODE} = require('../constants/constants')
 
 const checkCPUUsage = () => {
     const cpus = os.cpus();
@@ -29,7 +30,7 @@ const checkCPUUsage = () => {
     };
 };
 
-const monitorCPU = (req,res) => {
+const startCPUmonitor = (req,res) => {
     if (monitoringInterval) {
         clearInterval(monitoringInterval);
     }
@@ -62,11 +63,11 @@ const stopCPUmonitor = (req,res)=>{
     if (monitoringInterval) {
         clearInterval(monitoringInterval);
         monitoringInterval = null;
-        res.status(200).json({status:200,message:'CPU monitoring stopped.'});
+        res.status(200).json({status:STATUS_CODE.SUCCESS,message:'CPU monitoring stopped.'});
     } else {
-        res.status(200).json({status:200,message:'CPU monitoring is not running.'});
+        res.status(200).json({status:STATUS_CODE.FAILURE,message:'CPU monitoring is not running.'});
     }
 }
 
 
-module.exports={monitorCPU,stopCPUmonitor}
+module.exports={startCPUmonitor,stopCPUmonitor}

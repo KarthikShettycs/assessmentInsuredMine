@@ -3,6 +3,7 @@ const csvToJson = require('../utils/csvTojson')
 const xlsxToJson = require('../utils/xlxsTojson')
 const fs = require('fs');
 const uploadClientInfo = require('../services/uploadClientInfo')
+const {STATUS_CODE} = require('../constants/constants')
 
 try {
     async function uploadFile() {
@@ -18,9 +19,9 @@ try {
             }
             await uploadClientInfo.uploadToMongoDB(data);
             fs.unlinkSync(filePath);
-            parentPort.postMessage({ status: 200, Message: 'File uploaded successfully' });
+            parentPort.postMessage({ status: STATUS_CODE.SUCCESS, Message: 'File uploaded successfully' });
         } catch (error) {
-            parentPort.postMessage({ status: 500, Message: error.message });
+            parentPort.postMessage({ status: STATUS_CODE.FAILURE, Message: error.message });
         }
     }
     uploadFile()

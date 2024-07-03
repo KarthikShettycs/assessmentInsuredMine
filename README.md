@@ -24,6 +24,8 @@ Payload: null
 
 Task 2
 Track real-time CPU utilization of the node server and on 70% usage restart the server.
+pm2 start index.js
+
 Endpoint: http://localhost:20202/api/startMonitoringCPU
 Endpoint: http://localhost:20202/api/stopMonitoringCPU
 

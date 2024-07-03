@@ -46,7 +46,7 @@ router.post('/getAggregateData', getAggregatePolicyController.getAggregatorPolic
 
 router.post('/storeMessage', messageStoreController.getMessageStore) 
 
-router.post('/startMonitoringCPU',cpuRestartController.monitorCPU );
+router.post('/startMonitoringCPU',cpuRestartController.startCPUmonitor );
 
 router.post('/stopMonitoringCPU', cpuRestartController.stopCPUmonitor) 
 
